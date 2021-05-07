@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Preço</span>
+                                <span class="input-group-text" id="basic-addon1">Preço (com '.')</span>
                             </div>
                             <input required type="text" class="form-control form-input" name="price" aria-label="Preço" aria-describedby="basic-addon1">
                         </div>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Preço de promoção</span>
+                                <span class="input-group-text" id="basic-addon1">Preço de promoção (com '.')</span>
                             </div>
                             <input type="text" class="form-control form-input" name="new_price" aria-label="Preço promoção" aria-describedby="basic-addon1">
                         </div>
