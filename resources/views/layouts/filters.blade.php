@@ -9,7 +9,8 @@
         <div class="filter-title">
             <h4>Filtragem</h4>
         </div>
-        <div>
+        <form method="post" action="{{route('produtos.find')}}">
+            @csrf
             <div class="filter-search">
                 <div class="search-content">
                     <input type="search" class="form-control form-input" placeholder="Busque por itens" name="search" aria-label="Text" aria-describedby="basic-addon1">
@@ -18,13 +19,14 @@
             <div class="search-btn">
                 <button class="btn btn-danger btn-edit">Buscar</button>
             </div>
-        </div>
+        </form>
         <div class="filter-list">
             <ul>
                 <li id="lowPrice"><a>Menor preço</a></li>
                 <li id="highPrice"><a>Maior preço</a></li>
                 <li id="ascAlph"><a>Ordem alfabética [A-Z]</a></li>
                 <li id="descAlph"><a>Ordem alfabética [Z-A]</a></li>
+                <li id="promo"><a>Promoções</a></li>
                 <div>
                     <button onclick="createLink();" class="btn btn-default btn-edit mt-3">Filtrar</button>
                 </div>
@@ -32,18 +34,12 @@
         </div>
     </div>
 
-    {{--
-        href="/produtos?price=0"
-        href="/produtos?price=1"
-        href="/produtos?alf=0"
-        href="/produtos?alf=1"
-    --}}
-
     <script>
         let lowPrice = document.getElementById('lowPrice');
         let highPrice = document.getElementById('highPrice');
         let ascAlph = document.getElementById('ascAlph');
         let descAlph = document.getElementById('descAlph');
+        let promo = document.getElementById('promo');
 
         let link = '/produtos?';
 
@@ -51,6 +47,7 @@
         let clicked2 = false;
         let clicked3 = false;
         let clicked4 = false;
+        let clicked5 = false;
 
         lowPrice.addEventListener("click", (event) => {
             if (!clicked1) {
@@ -92,6 +89,16 @@
             }
         });
 
+        promo.addEventListener("click", (event) => {
+            if (!clicked5) {
+                clicked5 = true;
+                promo.classList.add("filter-item-active");
+            } else {
+                clicked5 = false;
+                promo.classList.remove("filter-item-active");
+            }
+        });
+
         function createLink() {
             if (clicked1) {
                 window.location.href = `${link}price=0`;
@@ -107,6 +114,10 @@
             }
             if (clicked4) {
                 window.location.href = `${link}alf=1`;
+                return;
+            }
+            if (clicked5) {
+                window.location.href = `${link}promo=1`;
                 return;
             }
             // if (clicked1 && clicked3) {

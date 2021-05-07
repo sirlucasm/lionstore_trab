@@ -24,6 +24,53 @@
         <div>
             @include('layouts.head')
             @include('layouts.filters')
+            <div class="container content">
+                <div class="my-5">
+                    @if(isset($query))
+                        <h3>Resultados da busca: {{$query}}</h3>
+                    @endif
+                </div>
+                <div class="products row">
+                    @foreach($products as $product)
+                        <div class="product col-lg-3 col-md-6 col-sm-12">
+                            <div class="row justify-content-center">
+                                <img src="{{ $product->url_image }}" width="200px"/>
+                            </div>
+                            <div class="product-texts">
+                                <a href="#">{{$product->name}}</a>
+                                <div class="product-description">
+                                    <p>{{$product->description}}</p>
+                                </div>
+                                <div class="product-stars">
+                                    @for($i = 0; $i < $product->stars; $i++)
+                                        <i class="bi bi-star-fill"></i>
+                                    @endfor
+                                </div>
+                                <div class="product-prices">
+                                    <div>
+                                        @if($product->new_price)
+                                            <p>R$ {{$product->price}}</p>
+                                        @endif
+                                    </div>
+                                    <div>
+                                        @if(!$product->new_price)
+                                            <h3>R$ {{$product->price}}</h3>
+                                        @else
+                                            <h3>R$ {{$product->new_price}}</h3>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="product-aviso row justify-content-center">
+                                    <span>A VISTA NO BOLETO 15% DE DESCONTO</span>
+                                </div>
+                            </div>
+                            <div class="buy-btn row justify-content-center">
+                                <a href=""><i class="bi bi-cart"></i> Comprar</a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </body>

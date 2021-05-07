@@ -1,0 +1,20 @@
+.my-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+.form-area {
+    width: 400px;
+    border-radius: 8px;
+}
+
+.btn-edit {
+    margin-left: 15px;
+    margin-top: 20px;
+}

@@ -264,7 +264,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="seemore" href="#">Ver mais</a>
+                    <a class="seemore" href="{{route('criarConta')}}">Ver mais</a>
                     <!-- end news brand -->
 
                     <!-- news shoes -->
@@ -304,7 +304,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="seemore" href="#">Ver mais</a>
+                    <a class="seemore" href="{{route('criarConta')}}">Ver mais</a>
                 </div>
 
             </div>
@@ -375,7 +375,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="seemore" href="#">Ver mais</a>
+                    <a class="seemore" href="{{route('criarConta')}}">Ver mais</a>
                 </div>
             </div>
         </div>

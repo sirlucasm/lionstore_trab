@@ -25,6 +25,7 @@
                 </div>
                 <a href="/sobre" class="menu-items">Sobre</a>
                 <a href="/meu-historico" class="menu-items">Meu Histórico</a>
+                <a href="{{route('produtos.anunciar')}}" class="menu-items">Anunciar</a>
                 <a href="/carrinho" class="menu-items menu-cart"><i class="bi bi-cart"></i>   </a>
                 <a class="menu-items menu-items-p dropdown-2">
                     <img src="/assets/images/default_pic.png" alt="Default profile picture" />

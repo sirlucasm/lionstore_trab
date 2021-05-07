@@ -47,8 +47,11 @@ Route::prefix('usuarios')->group(function () {
 
 Route::middleware(['PrivateRoute'])->group(function () {
     Route::prefix('produtos')->group(function () {
-        Route::get('/', function () {
-            return view('site.produtos.index');
-        })->name('produtos.index');
+        Route::get('/', 'ProductController@index')->name('produtos.index');
+        Route::get('/anunciar', function () {
+            return view('site.produtos.anunciar');
+        })->name('produtos.anunciar');
+        Route::post('/anunciar', 'ProductController@create')->name('produtos.create');
+        Route::post('/searchProducts', 'ProductController@find')->name('produtos.find');
     });
 });
