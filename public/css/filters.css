@@ -1,0 +1,49 @@
+.filter {
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 280px;
+    background-color: #f9f9f9;
+}
+.filter-title {
+    margin-top: 95px;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-search {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.search-content {
+    width: 210px;
+}
+.search-btn {
+    display: flex;
+    justify-content: flex-end !important;
+    margin-top: 10px;
+    margin-right: 40px;
+}
+
+
+.filter-list {
+    margin-top: 40px;
+}
+.filter-list ul {
+    list-style: circle;
+}
+.filter-list ul li {
+    color: #504a4a;
+    transition: .2s;
+    font-size: 14px;
+    cursor: pointer;
+}
+.filter-list ul li:hover {
+    color: #d44848;
+}
+.filter-item-active {
+    color: #d44848 !important;
+    list-style: initial;
+}
