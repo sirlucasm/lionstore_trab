@@ -560,33 +560,18 @@
             });
         });
     </script>
+
+    <script src="https://unpkg.com/blip-chat-widget@1.6.*" type="text/javascript"></script>
     <script>
-        // This example adds a marker to indicate the position of Bondi Beach in Sydney,
-        // Australia.
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 11,
-                center: {
-                    lat: 40.645037,
-                    lng: -73.880224
-                },
-            });
-
-            var image = '/assets/images/maps-and-flags.png';
-            var beachMarker = new google.maps.Marker({
-                position: {
-                    lat: 40.645037,
-                    lng: -73.880224
-                },
-                map: map,
-                /assets/icon: image
-            });
-        }
+        (function () {
+            window.onload = function () {
+                new BlipChat()
+                .withAppKey('aXphYmVsYTE6N2UyY2I1ZDItODQ3ZS00MTI3LWIxMzItN2FiODA0MmUyYjI3')
+                .withButton({"color":"#2CC3D5","icon":""})
+                .withCustomCommonUrl('https://chat.blip.ai/')
+                .build();
+            }
+        })();
     </script>
-    <!-- google map js -->
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
-    <!-- end google map js -->
 </body>
-
 </html>
