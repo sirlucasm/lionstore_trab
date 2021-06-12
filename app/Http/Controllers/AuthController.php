@@ -11,7 +11,7 @@ class AuthController extends Controller
     {
         $credentials = $params->only('email', 'password');
         if (Auth::attempt($credentials)) return redirect()->route('produtos.index', ['user' => $params]);
-        return redirect()->route('entrar');
+        return redirect()->route('entrar')->with('error', 'Credenciais incorretas');
     }
 
     public function logout(Request $params)

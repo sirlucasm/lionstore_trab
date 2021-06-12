@@ -29,6 +29,11 @@
         </div>
         <form action="{{route('auth.login')}}" method="post">
             @csrf
+            @if(session('error'))
+                <div class="alert alert-danger" style="margin: 20px 0;">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="row">
                 <h4>Entrar</h4>
                 <div class="input-group input-group-icon">
