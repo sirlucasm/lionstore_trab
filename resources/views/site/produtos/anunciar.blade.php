@@ -88,6 +88,22 @@
                             </div>
                             <input type="text" class="form-control form-input" name="new_price" aria-label="Preço promoção" aria-describedby="basic-addon1">
                         </div>
+                        <div class="form-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Estoque</span>
+                            </div>
+                            <input type="number" class="form-control form-input" name="stock" aria-label="Estoque" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Categoria</span>
+                            </div>
+                            <select class="form-control form-input" name="product_category_id">
+                                @foreach($categories as $key => $category)
+                                    <option value={{$category->id}}>{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="row">
                             <div>
                                 <button class="btn btn-danger btn-edit">Anunciar meu produto</button>

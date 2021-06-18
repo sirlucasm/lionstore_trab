@@ -59,7 +59,7 @@
                                 <div class="quantity-input row justify-content-start">
                                     <form method="post" action="{{ route('carrinho.updateQuantity', ['cart'=> $item->id]) }}">
                                         @csrf
-                                        <input type="number" onchange="this.form.submit()" value="{{$item->quantity}}" name="quantity" min="1" max=""/>
+                                        <input type="number" onchange="this.form.submit()" value="{{$item->quantity}}" name="quantity" min="1" max="{{$item->product->stock}}"/>
                                     </form>
                                 </div>
                                 <div class="delete-btn row justify-content-center">

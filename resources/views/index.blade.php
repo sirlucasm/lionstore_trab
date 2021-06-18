@@ -52,22 +52,9 @@
                 </div>
 
                 <ul class="list-unstyled components">
-
-                    <li class="active">
-                        <a href="index.html">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="#brand">Marcas</a>
-                    </li>
-                    <li>
-                        <a href="#shoes">Sapatos</a>
-                    </li>
-                    <li>
-                        <a href="#jewellery">Jóias</a>
-                    </li>
-                    <li>
-                        <a href="#kids">Crianças e bebês</a>
-                    </li>
+                    @foreach($categories as $key => $category)
+                        <li key="{{$key}}"><a href="#{{$category->name}}">{{$category->name}}</a></li>
+                    @endforeach
                 </ul>
 
             </nav>
@@ -105,14 +92,6 @@
                                             </li>
                                             <li class="menu_iconb">
                                                 <a href="/criar-conta">Cadastrar<img style="margin-left: 15px;" src="/assets/icon/6.png"
-                                                        alt="#" /></a>
-                                            </li>
-                                            <li class="tytyu">
-                                                <a href="#"> <img style="margin-right: 15px;" src="/assets/icon/2.png"
-                                                        alt="#" /></a>
-                                            </li>
-                                            <li class="menu_iconb">
-                                                <a href="#"><img style="margin-right: 15px;" src="/assets/icon/3.png"
                                                         alt="#" /></a>
                                             </li>
 
@@ -213,110 +192,54 @@
                             <div class="title">
                                 <h2> Categorias</h2>
                                 <ul class="categiri">
-                                    <li class="active"><a href="#">Roupas</a></li>
-                                    <li><a href="#">Eletronicos</a></li>
-                                    <li><a href="#shoes">Sapatos</a></li>
-                                    <li><a href="#">Relógios</a></li>
-                                    <li><a href="#jewellery">Jóias</a></li>
-                                    <li><a href="#">Saúde e beleza</a></li>
-                                    <li><a href="#kids">Crianças e bebês</a></li>
-                                    <li><a href="#">Esportes</a></li>
-                                    <li><a href="#">Casa e Jardim</a></li>
+                                    @foreach($categories as $key => $category)
+                                        <li key="{{$key}}"><a href="#{{$category->name}}">{{$category->name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- news brand -->
-                    <div id="brand" class="brand-bg">
-                        <h3>Novas marcas</h3>
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                <div class="brand-box">
-                                    <h5>Promoção</h5>
-                                    <i><img src="/assets/icon/p1.png" />
-                                    </i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
+                    @foreach($categories as $key => $category)
+                        <div id="{{$category->name}}" class="brand-bg">
+                            <h3>{{$category->name}}</h3>
+                            <div class="row">
+                                @if($products->count() > 0)
+                                    @foreach($products as $key => $product)
+                                        @if($category->id == $product->product_category_id)
+                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                                                <div class="brand-box">
+                                                    @if($product->new_price)
+                                                        <h5>Promoção</h5>
+                                                    @endif
+                                                    <i><img src="{{$product->url_image}}" />
+                                                    </i>
+                                                    @if($product->new_price)
+                                                        <h4>Preço R$<span class="nolmal">{{$product->new_price}}</span></h4>
+                                                    @else
+                                                        <h4>Preço R$<span class="nolmal">{{$product->price}}</span></h4>
+                                                    @endif
 
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                <div class="brand-box">
-                                    <i><img src="/assets/icon/p2.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                <div class="brand-box">
-                                    <i><img src="/assets/icon/p1.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                <div class="brand-box">
-                                    <i><img src="/assets/icon/p4.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
+                                                </div>
+                                                <a class="buynow" href="{{ route('carrinho.create', ['productId'=> $product->id]) }}">Comprar</a>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
-                    </div>
-                    <a class="seemore" href="{{route('criarConta')}}">Ver mais</a>
-                    <!-- end news brand -->
-
-                    <!-- news shoes -->
-                    <div id="shoes" class="shoes-bg">
-                        <h3>New shoes</h3>
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                <div class="shoes-box">
-                                    <h5>Promoção</h5>
-                                    <i><img src="/assets/icon/s1.png" />
-                                    </i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                <div class="shoes-box">
-                                    <i><img src="/assets/icon/s2.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                <div class="shoes-box">
-                                    <i><img src="/assets/icon/s3.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                <div class="shoes-box">
-                                    <i><img src="/assets/icon/s4.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="seemore" href="{{route('criarConta')}}">Ver mais</a>
+                        <a class="seemore" href="{{route('criarConta')}}">Ver mais</a>
+                    @endforeach
                 </div>
-
             </div>
         </div>
-        <!-- end news shoes -->
 
         <!-- end Categories -->
 
         <section>
             <!--  save -->
 
-            <div class="container">
+            <div class="container my-5">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="save">
@@ -334,96 +257,6 @@
             </div>
             <!-- end save -->
         </section>
-
-        <!-- news Jewellery -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="jewellery" class="Jewellery-bg">
-                        <h3>Novas joias</h3>
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                <div class="Jewellery-box">
-                                    <h5>Promoção</h5>
-                                    <i><img src="/assets/icon/j1.png" />
-                                    </i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                <div class="Jewellery-box">
-                                    <i><img src="/assets/icon/j2.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                <div class="Jewellery-box">
-                                    <i><img src="/assets/icon/j3.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                <div class="Jewellery-box">
-                                    <i><img src="/assets/icon/j4.png" /></i>
-                                    <h4>Preço R$<span class="nolmal">100</span></h4>
-                                </div>
-                                <a class="buynow" href="#">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="seemore" href="{{route('criarConta')}}">Ver mais</a>
-                </div>
-            </div>
-        </div>
-        <!-- end news Jewellery -->
-
-        <!-- news Kids -->
-        <div id="kids" class="Kids_background">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="Kids-bg">
-                            <h3>Crianças e bebês</h3>
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="Kids-box">
-
-                                        <i><img src="/assets/icon/k1.png" />
-                                        </i>
-                                        <h4>Preço R$<span class="nolmal">100</span></h4>
-
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="Kids-box">
-                                        <i><img src="/assets/icon/k1.png" /></i>
-                                        <h4>Preço R$<span class="nolmal">100</span></h4>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="Kids-box">
-                                        <i><img src="/assets/icon/k1.png" /></i>
-                                        <h4>Preço R$<span class="nolmal">100</span></h4>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="Kids-box">
-                                        <i><img src="/assets/icon/k1.png" /></i>
-                                        <h4>Preço R$<span class="nolmal">100</span></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end news Kids -->
 
         <!--  footer -->
         <footer>

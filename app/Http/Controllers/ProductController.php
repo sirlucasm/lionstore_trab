@@ -19,6 +19,25 @@ class ProductController extends Controller
         return view('site.produtos.index', ['products' => $products]);
     }
 
+    public function showAll(ProductCategoryController $productCategory) {
+        $products = $this->product->all();
+        $categories = $productCategory->index();
+
+        return view('index', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
+    }
+
+    public function publish(ProductCategoryController $productCategory) {
+        $products = $this->product->all();
+        $categories = $productCategory->index();
+
+        return view('site.produtos.anunciar', [
+            'categories' => $categories
+        ]);
+    }
+
     public function create(Request $params) {
         $data = $params->only(
             'name',
@@ -28,7 +47,9 @@ class ProductController extends Controller
             'modelo',
             'url_image',
             'tag',
-            'new_price'
+            'new_price',
+            'stock',
+            'product_category_id'
         );
         $save = $this->product->create($data);
         if ($save) {
