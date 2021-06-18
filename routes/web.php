@@ -45,6 +45,13 @@ Route::prefix('usuarios')->group(function () {
     Route::post('/editar', 'UserController@edit')->name('user.edit');
 });
 
+Route::prefix('carrinho')->group(function () {
+    Route::get('/', 'CartController@index')->name('carrinho.index');
+    Route::get('/adicionar', 'CartController@create')->name('carrinho.create');
+    Route::get('/excluir', 'CartController@delete')->name('carrinho.delete');
+    Route::post('/atualizarQuantidade', 'CartController@updateQuantity')->name('carrinho.updateQuantity');
+});
+
 Route::middleware(['PrivateRoute'])->group(function () {
     Route::prefix('produtos')->group(function () {
         Route::get('/', 'ProductController@index')->name('produtos.index');

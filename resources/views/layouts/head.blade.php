@@ -23,7 +23,6 @@
                     <a href="/produtos?c=relogios" class="dropdown-items">Relógios</a>
                     <a href="/produtos?c=calçados" class="dropdown-items">Calçados</a>
                 </div>
-                <a href="/sobre" class="menu-items">Sobre</a>
                 <a href="/meu-historico" class="menu-items">Meu Histórico</a>
                 <a href="{{route('produtos.anunciar')}}" class="menu-items">Anunciar</a>
                 <a href="/carrinho" class="menu-items menu-cart"><i class="bi bi-cart"></i>   </a>

@@ -1,0 +1,78 @@
+.content{
+    margin-top: 120px;
+}
+
+
+.item {
+    border: 1px solid #e6e6e6;
+    margin: 10px 20px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+.item:hover {
+    border: 1px solid #ee3e0f;
+    background: linear-gradient(180deg, rgba(2,0,36,0) 0%, rgba(238,62,15,0.134) 150%);
+}
+
+.item-texts {
+    margin-top: 14px;
+}
+.item-texts a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 19px;
+    color: #525252;
+}
+.item-description p {
+    font-size: 14px;
+    color: #909090;
+}
+
+.item-stars i {
+    color: #ee3e0f;
+    font-size: 16px;
+}
+.item-stars { margin: 20px 0 35px 0; }
+
+.item-prices div p {
+    font-size: 13.45px;
+    font-style: oblique;
+    text-decoration: line-through;
+}
+.item-prices div h3 {
+    font-size: 22px;
+    color: #ee3e0f;
+    margin-top: -10px;
+}
+
+.item-aviso span {
+    font-size: 9px;
+    margin: 10px 0;
+}
+
+.buy-btn {
+    margin: 7px 0 14px 0;
+}
+.buy-btn a{
+    text-decoration: none;
+    background-color: #ee3e0f;
+    color: #fff;
+    border-radius: 7px;
+    padding: 6px 14px;
+}
+.buy-btn a:hover, .delete-btn a:hover {
+    opacity: .9;
+}
+
+.delete-btn a{
+    text-decoration: none;
+    color: #ee3e0f;
+    border-radius: 7px;
+    padding: 6px 14px;
+}
+
+.quantity-input input{
+    outline: none;
+    width: 70px;
+    margin: 10px 0 10px 15px;
+}

@@ -16,15 +16,15 @@
 </head>
 <body>
     <div>
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
         <div>
             @include('layouts.head')
             @include('layouts.filters')
             <div class="container content">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="my-5">
                     @if(isset($query))
                         <h3>Resultados da busca: {{$query}}</h3>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="buy-btn row justify-content-center">
-                                <a href=""><i class="bi bi-cart"></i> Comprar</a>
+                                <a href="{{ route('carrinho.create', ['productId'=> $product->id]) }}"><i class="bi bi-cart"></i> Adicionar</a>
                             </div>
                         </div>
                     @endforeach
